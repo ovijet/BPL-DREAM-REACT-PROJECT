@@ -10,7 +10,7 @@ let playerData = async () => {
 };
 
 function App() {
-  let [coin, setCoin] = useState(5000000);
+  let [coin, setCoin] = useState(50000);
   let playersData = playerData();
   console.log(playersData);
   return (
@@ -20,7 +20,7 @@ function App() {
       <Banner></Banner>
 
       <Suspense fallback='ovi.......'>
-        <Players playersData={playersData} setCoin={setCoin}></Players>
+        <Players key={playerData.id} playersData={playersData} setCoin={setCoin} coin={coin}></Players>
       </Suspense>
     </>
   );

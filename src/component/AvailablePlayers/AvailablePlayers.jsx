@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-const AvailablePlayers = ({ play, setCoin }) => {
+const AvailablePlayers = ({
+  play,
+  setCoin,
+  coin,
+  setSelectedPlayers,
+  selecetedPlayer,
+}) => {
   // console.log(coin());
   let {
     playerName,
@@ -14,6 +20,21 @@ const AvailablePlayers = ({ play, setCoin }) => {
   } = play;
 
   const [isSelected, setIsSelected] = useState(false);
+
+  let hendelClick = () => {
+    // setIsSelected(true);
+    let newNum = coin - price;
+
+    if (newNum >= 0) {
+      setCoin(coin - price);
+      setIsSelected(true);
+      setSelectedPlayers([...selecetedPlayer, play]);
+    } else {
+      alert("nooooooo");
+      return;
+    }
+  };
+
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
@@ -36,10 +57,7 @@ const AvailablePlayers = ({ play, setCoin }) => {
             <p className="mb-2 font-semibold">{bowlingStyle}</p>
             <button
               className="btn"
-              onClick={() => {
-                setIsSelected(true);
-                setCoin(5)
-              }}
+              onClick={hendelClick}
               disabled={isSelected ? true : false}
             >
               {isSelected === true ? "selected" : "choose player"}

@@ -2,12 +2,13 @@ import React, { use, useState } from "react";
 import AvailablePlayers from "../AvailablePlayers/AvailablePlayers";
 import SelectedPlayer from "../selecetedPlayer/SelectedPlayer";
 
-const Players = ({ playersData, setCoin }) => {
+const Players = ({ playersData, setCoin,coin }) => {
   let data = use(playersData);
-  console.log(data);
+  // console.log(data);
 
   const [selectType, setSelectType] = useState("available");
   // console.log(selectType,'sweeeeeee');
+  let [selecetedPlayer,setSelectedPlayers]=useState([])
   return (
     <div>
       <div className="flex justify-between mt-5 container mx-auto">
@@ -42,11 +43,13 @@ const Players = ({ playersData, setCoin }) => {
             <AvailablePlayers
               key={play.id}
               play={play}
-              setCoin={setCoin}
+              setCoin={setCoin} coin={coin}
+              setSelectedPlayers={setSelectedPlayers}
+              selecetedPlayer={selecetedPlayer}
             ></AvailablePlayers>
           ))
         ) : (
-          <SelectedPlayer></SelectedPlayer>
+          <SelectedPlayer selecetedPlayer={selecetedPlayer}></SelectedPlayer>
         )}
       </div>
     </div>
