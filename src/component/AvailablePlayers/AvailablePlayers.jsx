@@ -28,11 +28,12 @@ const AvailablePlayers = ({
     if (newNum >= 0) {
       setCoin(coin - price);
       setIsSelected(true);
-      setSelectedPlayers([...selecetedPlayer, play]);
     } else {
       alert("nooooooo");
       return;
     }
+
+    setSelectedPlayers([...selecetedPlayer, play]);
   };
 
   return (

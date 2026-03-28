@@ -5,7 +5,7 @@ import Navbar from "./component/Navbar/Navbar";
 import Players from "./component/players-data/Players";
 
 let playerData = async () => {
-  let res = await fetch("/public/data.json");
+  let res = await fetch("./data.json");
   return res.json();
 };
 
@@ -19,8 +19,13 @@ function App() {
       <Navbar coin={coin}></Navbar>
       <Banner></Banner>
 
-      <Suspense fallback='ovi.......'>
-        <Players key={playerData.id} playersData={playersData} setCoin={setCoin} coin={coin}></Players>
+      <Suspense fallback="ovi.......">
+        <Players
+          key={playerData.id}
+          playersData={playersData}
+          setCoin={setCoin}
+          coin={coin}
+        ></Players>
       </Suspense>
     </>
   );
